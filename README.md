@@ -19,3 +19,10 @@ Example/POC for generating a dummy CA and cert, upload to S3, use TF to download
 3. delete tls folders: `find . -type d -name tls -exec rm -rf {} \;`
 4. remove state and backup: `find . -type f -iname "terraform.tfstate*" -delete`
 5. remove .terraform*: `find . -name ".terraform*" -exec rm -rf {} \;`
+
+**3-5:**
+```bash
+find . -type d -name tls -exec rm -rf {} \;
+find . -type f -iname "terraform.tfstate*" -delete
+find . -name ".terraform*" -exec rm -rf {} \;
+```
