@@ -1,6 +1,9 @@
 # cross_region_acm_certs_import
 
-Example/POC for generating a dummy CA and cert, upload to S3, use TF to download from S3 and deploy ACM certs to `eu-west-1` and `us-east-1` regions (latter for CloudFront)
+Example/POC to:
+1. Generate a dummy CA and server cert (bash)
+2. Use Terraform to upload the certs to new S3 bucket
+3. Use TF to download from S3 and deploy ACM certs to `eu-west-1` and `us-east-1` regions (latter for CloudFront)
 
 ## Deploy
 
