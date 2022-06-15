@@ -58,3 +58,15 @@ data "local_file" "chain" {
   depends_on  = [ null_resource.get_cert_objects ]
   filename    = "${path.module}/${local.path_prefix}/${var.cert.chain}"
 }
+
+# Force cleanup of keys locally
+resource "null_resource" "cleanup" {
+  depends_on = [
+    aws_acm_certificate.cert_us,
+    aws_acm_certificate.cert_us
+  ]
+
+  provisioner "local-exec" {
+    command = "rm -rf ./${local.path_prefix}"
+  }
+}

@@ -29,3 +29,14 @@ resource "aws_s3_object" "objects" {
   source = "${local.path_prefix}/${each.value}"
   etag   = filemd5("${local.path_prefix}/${each.value}")
 }
+
+# Force cleanup of keys locally
+resource "null_resource" "cleanup" {
+  depends_on = [
+    aws_s3_object.objects
+  ]
+
+  provisioner "local-exec" {
+    command = "rm -rf ./${local.path_prefix}"
+  }
+}
