@@ -14,7 +14,7 @@ confirm(){
 
 confirm "This will remove certs and destroy all terraform resources!"
 
-echo "desploying cross_region_acm ..."
+echo "destroying cross_region_acm ..."
 cd cross_region_acm || exit
 mkdir -p tls
 touch ./tls/cert.crt
@@ -24,7 +24,7 @@ terraform destroy --auto-approve 2> /dev/null
 
 cd "${CWD}" || exit
 
-echo "desploying certs_bucket ..."
+echo "destroying certs_bucket ..."
 cd certs_bucket || exit
 terraform destroy  --auto-approve 2> /dev/null
 
