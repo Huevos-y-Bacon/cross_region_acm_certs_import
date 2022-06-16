@@ -33,3 +33,10 @@ cd "${CWD}" || exit
 echo "deleting **/tls and **/.terrafor* ..."
 find . -type d -name "tls" -exec rm -rf {} \; 2> /dev/null
 find . -name ".terrafor*" -exec rm -rf {} \; 2> /dev/null
+echo "deleting empty state files ..."
+for f in $(find . -name "terraform.tfstate"); do
+if [[ $(wc -l $f | awk '{print $1}') -gt 10 ]]; then 
+  echo "$f: Resources still exist! "
+else rm -f $f* 2> /dev/null
+fi
+done
